@@ -45,6 +45,7 @@ pub enum Architecture {
     Sparc,
     Sparc64,
     Sparcv9,
+    Spirv,
     Wasm32,
     X86_64,
 }
@@ -448,6 +449,7 @@ impl Architecture {
             | Architecture::Msp430
             | Architecture::Nvptx64
             | Architecture::Powerpc64le
+            | Architecture::Spirv
             | Architecture::Riscv32
             | Architecture::Riscv32i
             | Architecture::Riscv32imac
@@ -506,6 +508,7 @@ impl Architecture {
             | Architecture::Nvptx64
             | Architecture::Powerpc64
             | Architecture::S390x
+            | Architecture::Spirv
             | Architecture::Sparc64
             | Architecture::Sparcv9 => Ok(PointerWidth::U64),
         }
@@ -618,6 +621,7 @@ impl fmt::Display for Architecture {
             Architecture::Powerpc => f.write_str("powerpc"),
             Architecture::Powerpc64 => f.write_str("powerpc64"),
             Architecture::Powerpc64le => f.write_str("powerpc64le"),
+            Architecture::Spirv => f.write_str("spirv"),
             Architecture::Riscv32 => f.write_str("riscv32"),
             Architecture::Riscv32i => f.write_str("riscv32i"),
             Architecture::Riscv32imac => f.write_str("riscv32imac"),
@@ -733,6 +737,7 @@ impl FromStr for Architecture {
             "sparc" => Architecture::Sparc,
             "sparc64" => Architecture::Sparc64,
             "sparcv9" => Architecture::Sparcv9,
+            "spirv" => Architecture::Spirv,
             "wasm32" => Architecture::Wasm32,
             "x86_64" => Architecture::X86_64,
             _ => {
